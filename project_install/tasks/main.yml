@@ -1,0 +1,37 @@
+---
+# Extract repo name from url and clean dir before
+- set_fact:
+  repo_name: "{{ github_url.split('/')[-1] }}"
+
+- name: Clean old potential existing files
+  file:
+    path: "~/{{ repo_name }}"
+    state: absent
+
+- name: Clone Repository
+  git:
+    repo: "{{ github_url }}"
+    dest: "~/{{ repo_name }}"
+    version: "{{ github_branch }}"  
+
+# Template the configuration files given
+- name: Inject properties into configuration files
+  template:
+    src: "~/{{ repo_name }}/{{ item }}"
+    dest: "~/{{ repo_name }}/{{ item }}"
+  loop: "{{ config_files }}" 
+  delegate_to: localhost
+
+
+# Install and compile project with maven if required
+- name: Install Maven
+  package:
+    name: maven
+    state: present
+  when: maven_compilation
+
+- name: Clean & Package Project
+  command:
+    cmd: mvn clean package
+    chdir: ~/
+  when: maven_compilation

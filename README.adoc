@@ -1,0 +1,78 @@
+# Deploy to CDP
+
+This project is an ansible playbook that "deploy" to CDP a given project by making automatic substitution of parameters to configuration files, by taking parameters from CM.
+
+Its intent is to reduce burden of configuration files between environment by allowing to use only variables automatically filled during deployment.
+
+It is also an "easy" way to deploy projects to CDP.
+
+
+## Requirements
+
+__N.B.: It is recommended to use anaconda on your computer and activate an ansible environment __
+
+- Have Ansible installed in version >= 2.10 
+
+- Have a running and working CDP cluster with CM APIs access
+
+
+## How to run it ?
+
+First, configure the project using link:extra_vars.yml[extra_vars.yml] file, at least cloudera-manager host should be filled.
+
+Run the project using this ansible command: 
+
+        ansible-playbook -i "${YOUR_EDGE_HOST}" main.yml --extra-vars "@extra_vars.yml"
+
+__N.B.: This playbook could run locally or on any machine (including the ones of the cluster)__
+
+
+## How does it work  ?
+
+It will clone the given project to the node you specified, gather configuration from CM and filled in the configuration files specified with those variables.
+
+Then, an optionnal compilation could be made.
+
+
+## List of variables available for your configuration file
+
+CM related:
+        cloudera_manager_api_version
+        cloudera_manager_protocol
+        cloudera_manager_port
+        cloudera_manager_truststore_password_api
+        cluster_name
+        cdp_version
+
+HDFS related:
+        hdfs_nameservice
+        hdfs_port
+
+HBase related:
+        hbase_znode
+
+Hive related:
+        tez_queue_name
+        hive_zk_namespace
+
+Kafka Related:
+        kafka_protocol
+        kafka_url
+
+Kudu Related:
+        kudu_url
+
+Ozone Related:
+        ozone_service_id
+
+Ranger Related:
+        ranger_url
+
+Schema Registry Related:
+        sr_url
+
+SolR Related:
+        solr_url
+
+Zookeeper Related: 
+        zk_quorum_with_port

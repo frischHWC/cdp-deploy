@@ -1,0 +1,7 @@
+launch.sh
+test.sh
+.DS_store
+secrets.yml
+*.keytab
+*/*.keytab
+*.jar
