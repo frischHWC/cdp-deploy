@@ -37,42 +37,53 @@ Then, an optionnal compilation could be made.
 ## List of variables available for your configuration file
 
 CM related:
-        cloudera_manager_api_version
-        cloudera_manager_protocol
-        cloudera_manager_port
-        cloudera_manager_truststore_password_api
-        cluster_name
-        cdp_version
+
+       cloudera_manager_api_version
+       cloudera_manager_protocol
+       cloudera_manager_port
+       cloudera_manager_truststore_password_api
+       cluster_name
+       cdp_version
 
 HDFS related:
+
         hdfs_nameservice
         hdfs_port
 
 HBase related:
+
         hbase_znode
 
 Hive related:
+
         tez_queue_name
         hive_zk_namespace
 
 Kafka Related:
+
         kafka_protocol
         kafka_url
 
 Kudu Related:
+
         kudu_url
 
 Ozone Related:
+
         ozone_service_id
 
 Ranger Related:
+
         ranger_url
 
 Schema Registry Related:
+
         sr_url
 
 SolR Related:
+
         solr_url
 
 Zookeeper Related: 
+
         zk_quorum_with_port
