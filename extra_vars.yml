@@ -2,7 +2,7 @@
 debug: false
 
 # CM info required
-cloudera_manager_host: 
+# cloudera_manager_host: 
 cloudera_manager_user: admin 
 cloudera_manager_password: admin
 
@@ -12,7 +12,7 @@ kerb_user: dev@FRISCH.COM
 kerb_keytab: /home/dev/dev.keytab
 
 # Projects to Deploy
-github_url: https://github.com/frischHWC/random-datagen
+# github_url: https://github.com/frischHWC/random-datagen
 github_branch: master
 config_files: ['src/main/resources/config.properties']
 
